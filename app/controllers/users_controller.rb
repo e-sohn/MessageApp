@@ -8,9 +8,13 @@ class UsersController < ApplicationController
 
   def create
     if(params[:user_id])
-      @user = User.find(params[:user_id])
-      @chatroom = Chatroom.find(params[:chatroom_id])
-      @user.chatrooms << @chatroom
+      if(params[:user_id].to_i == current_user.id)
+        @user = User.find(params[:user_id])
+        @chatroom = Chatroom.find(params[:chatroom_id])
+        @user.chatrooms << @chatroom
+      else
+        render json: { errors: "unauthorized" }
+      end
     else
       email = params[:email]
       password = params[:password]
@@ -83,19 +87,40 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      redirect_to @user
+
+    if @user.id == current_user.id
+      email = params[:email]
+      password = params[:password]
+      username = params[:username]
+
+      @user.update!({
+        password: password,
+        email: email,
+        username: username
+      })
+
+      render json: { user: @user }
+    else
+      render json: { errors: "unauthorized" }
     end
   end
 
   def destroy
     if(params[:user_id])
-      @user = User.find(params[:user_id])
-      @user.chatrooms.delete(params[:chatroom_id])
+      if(params[:user_id].to_i == current_user.id)
+        @user = User.find(params[:user_id])
+        @user.chatrooms.delete(params[:chatroom_id])
+      else
+        render json: { errors: "unauthorized" }
+      end
     else
       @user = User.find(params[:id])
-      @user.destroy
-      redirect_to users_path
+      if @user.id == current_user.id
+        @user.destroy
+        render status: :ok
+      else
+        render json: { errors: "unauthorized" }
+      end
     end
   end
 

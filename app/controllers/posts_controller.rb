@@ -11,34 +11,33 @@ class PostsController < ApplicationController
   end
 
   def create
-    @chatroom = Chatroom.find(params[:chatroom_id])
-    @post = Post.new(post_params)
-    if @post.save
-      @chatroom.posts.push(@post)
-      render json: @post, status: :created
-    else
-      render json: { errors: @post.errors }, status: :unprocessable_entity
-    end
+    @post = current_user.posts.create!(post_params)
+    render json: @post, status: :created
   end
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      render json: @post, status: :ok
+    if @post.user == current_user
+      @post.update!(post_params)
+      render json: { post: @post }
     else
-      render json: { errors: @post.errors }, status: :unprocessable_entity
+      render json: { errors: "unauthorized" }
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    head 204
+    if @post.user == current_user
+      @post.destroy
+      head 204
+    else
+      render json: { errors: "unauthorized" }
+    end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:text, :user_id, :chatroom_id)
+    params.require(:post).permit(:text, :chatroom_id)
   end
 end

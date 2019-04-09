@@ -2622,3 +2622,582 @@ Processing by UsersController#verify as HTML
 Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
 
 
+Started POST "/posts" for 127.0.0.1 at 2019-04-08 22:41:36 -0400
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#create as HTML
+  Parameters: {"text"=>"hello", "chatroom_id"=>1, "post"=>{"text"=>"hello", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:14
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14
+  [1m[36mPost Create (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("text", "user_id", "chatroom_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "hello"], ["user_id", 3], ["chatroom_id", 1], ["created_at", "2019-04-09 02:41:36.866107"], ["updated_at", "2019-04-09 02:41:36.866107"]]
+  ↳ app/controllers/posts_controller.rb:14
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:14
+Completed 201 Created in 57ms (Views: 0.4ms | ActiveRecord: 9.5ms)
+
+
+Started PUT "/posts/1" for 127.0.0.1 at 2019-04-08 22:45:49 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"1", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 5.9ms)
+
+
+Started PUT "/posts/2" for 127.0.0.1 at 2019-04-08 22:46:28 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"2", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started PUT "/posts/3" for 127.0.0.1 at 2019-04-08 22:47:18 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"3", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started PUT "/posts/4" for 127.0.0.1 at 2019-04-08 22:47:47 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"4", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:21
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:21
+  [1m[36mPost Update (0.4ms)[0m  [1m[33mUPDATE "posts" SET "text" = $1, "chatroom_id" = $2, "updated_at" = $3 WHERE "posts"."id" = $4[0m  [["text", "square"], ["chatroom_id", 1], ["updated_at", "2019-04-09 02:47:47.854402"], ["id", 4]]
+  ↳ app/controllers/posts_controller.rb:21
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:21
+Completed 200 OK in 26ms (Views: 0.4ms | ActiveRecord: 3.3ms)
+
+
+Started PUT "/posts/2" for 127.0.0.1 at 2019-04-08 22:51:16 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"2", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 5.9ms)
+
+
+  
+NoMethodError (undefined method `render_error_page' for #<PostsController:0x00007fb0e592a700>
+Did you mean?  render_to_string):
+  
+app/controllers/posts_controller.rb:24:in `update'
+Started PUT "/posts/2" for 127.0.0.1 at 2019-04-08 22:51:52 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"square", "chatroom_id"=>1, "id"=>"2", "post"=>{"text"=>"square", "chatroom_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 4.8ms)
+
+
+Started PUT "/users/1" for 127.0.0.1 at 2019-04-08 23:36:17 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"1", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:86
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["username", "how"], ["email", "howdy@gmail.com"], ["updated_at", "2019-04-09 03:36:18.097115"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:86
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:86
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 17ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-04-08 23:36:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/2" for 127.0.0.1 at 2019-04-08 23:37:07 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"2", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:86
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["username", "how"], ["email", "howdy@gmail.com"], ["updated_at", "2019-04-09 03:37:07.147870"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:86
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:86
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 12ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2019-04-08 23:37:07 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/users/2" for 127.0.0.1 at 2019-04-08 23:37:59 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"2", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 2.9ms)
+
+
+Started PUT "/users/2" for 127.0.0.1 at 2019-04-08 23:38:24 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"2", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.9ms)
+
+
+Started PUT "/users/4" for 127.0.0.1 at 2019-04-08 23:38:48 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"4", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 500 Internal Server Error in 8ms (Views: 0.2ms | ActiveRecord: 2.5ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/users_controller.rb:91:in `update'
+Started PUT "/users/4" for 127.0.0.1 at 2019-04-08 23:39:06 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"4", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.4ms)
+
+
+Started PUT "/users/5" for 127.0.0.1 at 2019-04-08 23:39:13 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"5", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/3" for 127.0.0.1 at 2019-04-08 23:39:20 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"how", "email"=>"howdy@gmail.com", "password"=>"[FILTERED]", "id"=>"3", "user"=>{"email"=>"howdy@gmail.com", "username"=>"how"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:87
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["username", "how"], ["email", "howdy@gmail.com"], ["updated_at", "2019-04-09 03:39:20.552381"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:87
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:87
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 6.2ms)
+
+
+Started DELETE "/users/1" for 127.0.0.1 at 2019-04-08 23:40:50 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:99
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started DELETE "/users/2" for 127.0.0.1 at 2019-04-08 23:40:56 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:99
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/3" for 127.0.0.1 at 2019-04-08 23:41:00 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:99
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mPost Destroy (0.3ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mPost Destroy (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mPost Destroy (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mPost Destroy (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mUser::HABTM_Chatrooms Destroy (44.2ms)[0m  [1m[31mDELETE FROM "chatrooms_users" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:101
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:101
+Redirected to http://localhost:3000/users
+Completed 302 Found in 122ms (ActiveRecord: 89.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-04-08 23:41:00 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=3):
+  
+app/controllers/application_controller.rb:25:in `block in find_current_user'
+app/controllers/application_controller.rb:23:in `find_current_user'
+app/controllers/application_controller.rb:19:in `current_user'
+app/controllers/application_controller.rb:30:in `ensure_signed_in'
+Started DELETE "/users/3" for 127.0.0.1 at 2019-04-08 23:42:12 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=3):
+  
+app/controllers/application_controller.rb:25:in `block in find_current_user'
+app/controllers/application_controller.rb:23:in `find_current_user'
+app/controllers/application_controller.rb:19:in `current_user'
+app/controllers/application_controller.rb:30:in `ensure_signed_in'
+Started DELETE "/users/4" for 127.0.0.1 at 2019-04-08 23:42:21 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=3):
+  
+app/controllers/application_controller.rb:25:in `block in find_current_user'
+app/controllers/application_controller.rb:23:in `find_current_user'
+app/controllers/application_controller.rb:19:in `current_user'
+app/controllers/application_controller.rb:30:in `ensure_signed_in'
+Started POST "/users" for 127.0.0.1 at 2019-04-08 23:44:46 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"yaya@gmail.com", "username"=>"Im so cool", "password"=>"[FILTERED]", "user"=>{"email"=>"yaya@gmail.com", "username"=>"Im so cool"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "yaya@gmail.com"], ["username", "Im so cool"], ["password_digest", "$2a$10$nTI1QYXk/UtjSOAGioosu.G5o6VOFqyy7Ido4rujuqChZYt4thu5."], ["created_at", "2019-04-09 03:44:46.840675"], ["updated_at", "2019-04-09 03:44:46.840675"]]
+  ↳ app/controllers/users_controller.rb:26
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:26
+Completed 200 OK in 64ms (Views: 0.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-04-08 23:45:13 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:66
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/8" for 127.0.0.1 at 2019-04-08 23:46:08 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"Im so cool", "email"=>"yaya@gmail.com", "password"=>"[FILTERED]", "id"=>"8", "user"=>{"email"=>"yaya@gmail.com", "username"=>"Im so cool"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:87
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:87
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started PUT "/users/8" for 127.0.0.1 at 2019-04-08 23:46:38 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"Im so cool", "email"=>"hod@gmail.com", "password"=>"[FILTERED]", "id"=>"8", "user"=>{"email"=>"hod@gmail.com", "username"=>"Im so cool"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:87
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["email", "hod@gmail.com"], ["updated_at", "2019-04-09 03:46:38.858372"], ["id", 8]]
+  ↳ app/controllers/users_controller.rb:87
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:87
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 6.2ms)
+
+
+Started PUT "/users/8" for 127.0.0.1 at 2019-04-08 23:50:25 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"Im so cool", "email"=>"hod@gmail.com", "password"=>"[FILTERED]", "id"=>"8", "user"=>{"email"=>"hod@gmail.com", "username"=>"Im so cool"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:92
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$10$SPHpyEZc.z3FCdfwLbeoReov9wgZtM/1c0p4aO2gFpOhmWSis1/3u"], ["updated_at", "2019-04-09 03:50:25.721585"], ["id", 8]]
+  ↳ app/controllers/users_controller.rb:92
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:92
+Completed 200 OK in 65ms (Views: 0.4ms | ActiveRecord: 3.2ms)
+
+
+Started PUT "/users/8" for 127.0.0.1 at 2019-04-08 23:50:43 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"Im so cool", "email"=>"hod@gmail.com", "password"=>"[FILTERED]", "id"=>"8", "user"=>{"email"=>"hod@gmail.com", "username"=>"Im so cool"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:92
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$10$Cq8P518zWTgwRbeSDOLajeU1xv31C5JS.2QSxXfPZdiT.l9Mt3peG"], ["updated_at", "2019-04-09 03:50:43.507975"], ["id", 8]]
+  ↳ app/controllers/users_controller.rb:92
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:92
+Completed 200 OK in 64ms (Views: 0.5ms | ActiveRecord: 6.5ms)
+
+
+Started PUT "/users/7" for 127.0.0.1 at 2019-04-08 23:50:56 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"username"=>"Im so cool", "email"=>"hod@gmail.com", "password"=>"[FILTERED]", "id"=>"7", "user"=>{"email"=>"hod@gmail.com", "username"=>"Im so cool"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/5" for 127.0.0.1 at 2019-04-08 23:51:09 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/8" for 127.0.0.1 at 2019-04-08 23:51:16 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:109
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:111
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/controllers/users_controller.rb:111
+  [1m[36mUser::HABTM_Chatrooms Destroy (0.2ms)[0m  [1m[31mDELETE FROM "chatrooms_users" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 8]]
+  ↳ app/controllers/users_controller.rb:111
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/users_controller.rb:111
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:111
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-04-08 23:51:29 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=8):
+  
+app/controllers/application_controller.rb:25:in `block in find_current_user'
+app/controllers/application_controller.rb:23:in `find_current_user'
+app/controllers/application_controller.rb:19:in `current_user'
+app/controllers/application_controller.rb:30:in `ensure_signed_in'
+Started POST "/users" for 127.0.0.1 at 2019-04-08 23:56:06 -0400
+  
+SyntaxError (/Users/esohn/wdi/MessageApp/message/app/controllers/users_controller.rb:16: syntax error, unexpected ':', expecting keyword_end
+        json: { errors: "unauthorized" }
+             ^):
+  
+app/controllers/users_controller.rb:16: syntax error, unexpected ':', expecting keyword_end
+Started POST "/users" for 127.0.0.1 at 2019-04-08 23:56:14 -0400
+  
+SyntaxError (/Users/esohn/wdi/MessageApp/message/app/controllers/users_controller.rb:16: syntax error, unexpected ':', expecting keyword_end
+        json: { errors: "unauthorized" }
+             ^):
+  
+app/controllers/users_controller.rb:16: syntax error, unexpected ':', expecting keyword_end
+Started POST "/users" for 127.0.0.1 at 2019-04-08 23:56:52 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"username"=>"hello", "email"=>"cool@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"cool@gmail.com", "username"=>"hello"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "cool@gmail.com"], ["username", "hello"], ["password_digest", "$2a$10$3fRuLldH.igiP6SkCHec.uCHYYYS1WHi5K9AZQd0bv0iXgSJiWN1i"], ["created_at", "2019-04-09 03:56:53.055290"], ["updated_at", "2019-04-09 03:56:53.055290"]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:30
+Completed 200 OK in 61ms (Views: 0.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2019-04-08 23:57:24 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:70
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/chatrooms/2" for 127.0.0.1 at 2019-04-08 23:58:11 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/7/chatrooms/2" for 127.0.0.1 at 2019-04-08 23:58:21 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"7", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/9/chatrooms/2" for 127.0.0.1 at 2019-04-08 23:58:27 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"9", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/9/chatrooms/2" for 127.0.0.1 at 2019-04-08 23:59:17 -0400
+  
+SyntaxError (/Users/esohn/wdi/MessageApp/message/app/controllers/users_controller.rb:11: syntax error, unexpected ':', expecting '}'
+      render json { user: params[:user_id], current: current_user.id}
+                         ^
+/Users/esohn/wdi/MessageApp/message/app/controllers/users_controller.rb:11: syntax error, unexpected tLABEL, expecting '='
+      render json { user: params[:user_id], current: current_user.id}
+                                                    ^):
+  
+app/controllers/users_controller.rb:11: syntax error, unexpected ':', expecting '}'
+app/controllers/users_controller.rb:11: syntax error, unexpected tLABEL, expecting '='
+Started POST "/users/9/chatrooms/2" for 127.0.0.1 at 2019-04-08 23:59:44 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"9", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/users/3/chatrooms/2" for 127.0.0.1 at 2019-04-09 00:00:55 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"3", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/users/9/chatrooms/2" for 127.0.0.1 at 2019-04-09 00:01:01 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"9", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mChatroom Load (0.7ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:14
+  [1m[36mUser::HABTM_Chatrooms Create (5.8ms)[0m  [1m[32mINSERT INTO "chatrooms_users" ("chatroom_id", "user_id") VALUES ($1, $2)[0m  [["chatroom_id", 2], ["user_id", 9]]
+  ↳ app/controllers/users_controller.rb:14
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:14
+Completed 204 No Content in 28ms (ActiveRecord: 10.6ms)
+
+
+Started DELETE "/users/9/chatrooms/2" for 127.0.0.1 at 2019-04-09 00:02:37 -0400
+Processing by UsersController#destroy as HTML
+  Parameters: {"user_id"=>"9", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:111
+  [1m[36mChatroom Load (41.5ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 9], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:112
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:112
+  [1m[36mUser::HABTM_Chatrooms Destroy (0.3ms)[0m  [1m[31mDELETE FROM "chatrooms_users" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms_users"."chatroom_id" = $2[0m  [["user_id", 9], ["chatroom_id", 2]]
+  ↳ app/controllers/users_controller.rb:112
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:112
+Completed 204 No Content in 84ms (ActiveRecord: 49.1ms)
+
+
