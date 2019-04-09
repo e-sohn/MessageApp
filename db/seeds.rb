@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(email: "hello@gmail.com", username: 'bob', password_digest: 'yikes')
-user2 = User.create(email: "goodbye@gmail.com", username: 'sally', password_digest: 'ilikelamp')
-user3 = User.create(email: "dingdong@gmail.com", username: 'mike', password_digest: 'nono')
-
+user1 = User.create(email: "hello@gmail.com", username: 'bob', password: 'yikes')
+user2 = User.create(email: "goodbye@gmail.com", username: 'sally', password: 'ilikelamp')
+user3 = User.create(email: "dingdong@gmail.com", username: 'mike', password: 'nono')
+ 
 event1 = Event.create(title: "Wedding")
 event2 = Event.create(title: "Anniversary")
 event3 = Event.create(title: "Birthday")
