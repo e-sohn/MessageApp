@@ -11,8 +11,17 @@ const Main = (props) => {
           <div>
             <Register
               handleChange={props.handleChange}
-              handleRegister={props.handleRegister}
-              handleLogin={props.handleLogin}
+              handleSubmit={props.handleRegister}
+              username={props.username}
+              email={props.email}
+              password={props.password}/>
+          </div>
+      )}/>
+      <Route exact path='/login' render={() => (
+          <div>
+            <Register
+              handleChange={props.handleChange}
+              handleSubmit={props.handleLogin}
               username={props.username}
               email={props.email}
               password={props.password}/>

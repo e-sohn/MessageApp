@@ -27,13 +27,12 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
 
   }
 
   componentDidMount() {
-    // localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTB9.TkVFxiMtoUe_F1uJs-vVuXdQcTD74g4jl5e_4ibSfeY');
     const token = localStorage.getItem('token');
-    const user = decode(token);
 
     if (token) {
       const user = decode(token);
@@ -41,7 +40,7 @@ class App extends Component {
         user
       });
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // this.props.history.push(`/home`);
+      this.props.history.push(`/home`);
     }
   }
 
@@ -90,10 +89,21 @@ class App extends Component {
     this.props.history.push(`/home`);
   }
 
+  handleLogout() {
+    this.setState({
+      user: {
+        username: '',
+        email:'',
+        id: '',
+      },
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header
+          handleLogout={this.handleLogout}/>
         <Main
           handleChange={this.handleChange}
           handleRegister={this.handleRegister}

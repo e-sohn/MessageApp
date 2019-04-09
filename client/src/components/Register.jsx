@@ -3,9 +3,10 @@ import React from 'react';
 const Register = (props) => {
   return (
     <form
-      onSubmit={props.handleRegister}
+      onSubmit={props.handleSubmit}
       className="register-form">
       <div>
+      { window.location.href !== "http://localhost:3001/login" &&
        <input
         className="register-input"
         type="text"
@@ -14,6 +15,7 @@ const Register = (props) => {
         onChange={props.handleChange}
         value={props.username}
         required />
+      }
        <input
         className="register-input"
         type="email"
@@ -32,7 +34,7 @@ const Register = (props) => {
         required />
       <input
         type="submit"
-        onSubmit={props.handleRegister} />
+        onSubmit={props.handleSubmit} />
       </div>
     </form>
   )

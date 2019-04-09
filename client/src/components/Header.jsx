@@ -4,9 +4,18 @@ import { Link } from 'react-router-dom';
 import { dropToken } from '../services/apiHelper';
 
 const Header = (props) => {
+  const token = localStorage.getItem('token');
   return (
     <header>
-      <Link to="/home"><h1 className="title">octave.</h1></Link>
+      <Link to="/home"><h1 className="title">Messaging</h1></Link>
+
+      { token &&
+        <p className="nav-link" onClick={() => {
+          dropToken();
+          props.handleLogout();
+          props.history.push(`/`);
+          }}>Sign Out</p>
+      }
     </header>
   )
 }
