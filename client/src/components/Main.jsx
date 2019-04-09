@@ -14,7 +14,10 @@ const Main = (props) => {
               handleSubmit={props.handleRegister}
               username={props.username}
               email={props.email}
-              password={props.password}/>
+              password={props.password}
+              value="Register"
+              navLogin={props.navLogin}
+              navRegister={props.navRegister}/>
           </div>
       )}/>
       <Route exact path='/login' render={() => (
@@ -24,7 +27,10 @@ const Main = (props) => {
               handleSubmit={props.handleLogin}
               username={props.username}
               email={props.email}
-              password={props.password}/>
+              password={props.password}
+              value="Log In"
+              navLogin={props.navLogin}
+              navRegister={props.navRegister}/>
           </div>
       )}/>
       <Route exact path='/home' render={() => (

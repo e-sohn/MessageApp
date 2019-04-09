@@ -28,7 +28,8 @@ class App extends Component {
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-
+    this.navLogin = this.navLogin.bind(this);
+    this.navRegister = this.navRegister.bind(this);
   }
 
   componentDidMount() {
@@ -99,6 +100,14 @@ class App extends Component {
     })
   }
 
+  navLogin() {
+    this.props.history.push(`/login`);
+  }
+
+  navRegister() {
+    this.props.history.push(`/`);
+  }
+
   render() {
     return (
       <div className="App">
@@ -110,7 +119,9 @@ class App extends Component {
           handleLogin={this.handleLogin}
           username={this.state.registerForm.username}
           email={this.state.registerForm.email}
-          password={this.state.registerForm.password}/>
+          password={this.state.registerForm.password}
+          navLogin={this.navLogin}
+          navRegister={this.navRegister} />
         <Footer />
       </div>
     );
