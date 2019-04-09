@@ -8,7 +8,19 @@ const Header = (props) => {
   return (
     <header>
       <Link to="/home"><h1 className="title">Messaging</h1></Link>
-
+      { window.location.pathname !== "/login" &&
+      window.location.pathname !== "/" &&
+      !token &&
+        <p onClick={props.navRegister}>Register</p>
+      }
+      { window.location.pathname !== "/login" &&
+      window.location.pathname !== "/" &&
+      !token &&
+        <p onClick={props.navLogin}>Login</p>
+      }
+      { token &&
+        <p>Welcome {props.username}</p>
+      }
       { token &&
         <p className="nav-link" onClick={() => {
           dropToken();

@@ -7,7 +7,7 @@ const Register = (props) => {
         onSubmit={props.handleSubmit}
         className="register-form">
         <div>
-        { window.location.href !== "http://localhost:3001/login" &&
+        { window.location.pathname !== "/login" &&
          <input
           className="register-input"
           type="text"
