@@ -18,6 +18,12 @@ const dropToken = () => {
 
 //////////////User LOGIN and REGISTRATION ///////////////////
 
+// Get a user based on ID
+const getUser = async (id) => {
+  const resp = await api.get(`/users/${id}`);
+  return resp.data;
+};
+
 // Register
 const createUser = async (data) => {
   const resp = await api.post(`/users`, data);
@@ -143,6 +149,7 @@ const deleteUserChatroom = async (user_id, chatroom_id) => {
 export {
   updateToken,
   dropToken,
+  getUser,
   createUser,
   loginUser,
   editUser,

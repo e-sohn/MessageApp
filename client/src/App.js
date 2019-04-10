@@ -4,7 +4,16 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import { loginUser, createUser, updateToken, getEvents, getChatrooms, getPosts } from './services/apiHelper';
+import { loginUser,
+  createUser,
+  updateToken,
+  getEvents,
+  getChatrooms,
+  getPosts,
+  getUser,
+  createPost,
+  deletePost,
+  updatePost } from './services/apiHelper';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
@@ -22,11 +31,16 @@ class App extends Component {
         email: '',
         password: ''
       },
+      editFormId: null,
+      editText: '',
+      text: '',
       events: [],
       chatrooms: [],
       posts: []
     }
 
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleSubmitText = this.handleSubmitText.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
@@ -35,6 +49,12 @@ class App extends Component {
     this.navRegister = this.navRegister.bind(this);
     this.navEvent = this.navEvent.bind(this);
     this.navChatroom = this.navChatroom.bind(this);
+    this.navHome = this.navHome.bind(this);
+    this.navBackEvent = this.navBackEvent.bind(this);
+    this.getUsers = this.getUsers.bind(this);
+    this.removePost = this.removePost.bind(this);
+    this.editPost = this.editPost.bind(this);
+    this.makeEditForm = this.makeEditForm.bind(this);
 
   }
 
@@ -47,12 +67,35 @@ class App extends Component {
         user
       });
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      this.props.history.push(`/home`);
+      this.props.history.push(`/events`);
       const events = await getEvents();
       this.setState({
         events
       })
     }
+  }
+
+  handleChangeText(ev) {
+    const { name, value } = ev.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  async handleSubmitText(ev) {
+    ev.preventDefault();
+    const string = this.props.history.location.pathname;
+    const chatroomId = string.match(/\d+/g).map(Number)[1];
+
+    const newPost = await createPost({
+      text: this.state.text,
+      chatroom_id: chatroomId
+    });
+
+    this.setState(prevState => ({
+      text: '',
+      posts: [...prevState.posts, newPost]
+    }));
   }
 
   handleChange(ev) {
@@ -86,7 +129,7 @@ class App extends Component {
       user,
       events
     });
-    this.props.history.push(`/home`);
+    this.props.history.push(`/events`);
   }
 
   async handleLogin(ev) {
@@ -109,7 +152,7 @@ class App extends Component {
       user: userInfo,
       events
     });
-    this.props.history.push(`/home`);
+    this.props.history.push(`/events`);
   }
 
   handleLogout() {
@@ -143,6 +186,49 @@ class App extends Component {
     this.props.history.push(`/events/${eventId}`);
   }
 
+  async getUsers(posts) {
+    if (posts) {
+      const usernames = posts.map(async (post) => {
+        const user = await getUser(post.user_id);
+        return user
+      });
+      return await Promise.all(usernames);
+    }
+  }
+
+  makeEditForm(formId) {
+    this.setState({
+      editFormId: formId
+    })
+  }
+
+  async editPost(postId) {
+    const string = this.props.history.location.pathname;
+    const chatroomId = string.match(/\d+/g).map(Number)[1];
+
+    const newPost = await updatePost(postId, {
+      editText: this.state.editText,
+      chatroom_id: chatroomId
+    });
+  }
+
+  async removePost(postId) {
+    await deletePost(postId);
+    this.setState({
+      posts: this.state.posts.filter((post) => post.id !== postId)
+    });
+  }
+
+  navBackEvent() {
+    const eventString = this.props.history.location.pathname;
+    const eventId = eventString.match(/\d+/g).map(Number)[0];
+    this.props.history.push(`/events/${eventId}`);
+  }
+
+  navHome() {
+    this.props.history.push(`/events`);
+  }
+
   navLogin() {
     this.props.history.push(`/login`);
   }
@@ -160,6 +246,9 @@ class App extends Component {
           navLogin={this.navLogin}
           navRegister={this.navRegister}/>
         <Main
+          user={this.state.user}
+          handleChangeText={this.handleChangeText}
+          handleSubmitText={this.handleSubmitText}
           handleChange={this.handleChange}
           handleRegister={this.handleRegister}
           handleLogin={this.handleLogin}
@@ -169,10 +258,16 @@ class App extends Component {
           navLogin={this.navLogin}
           navRegister={this.navRegister}
           navEvent={this.navEvent}
+          navBackEvent={this.navBackEvent}
           navChatroom={this.navChatroom}
+          navHome={this.navHome}
           events={this.state.events}
           chatrooms={this.state.chatrooms}
-          posts={this.state.posts}/>
+          posts={this.state.posts}
+          getUsers={this.getUsers}
+          text={this.state.text}
+          removePost={this.removePost}
+          makeEditForm={this.makeEditForm}/>
         <Footer />
       </div>
     );

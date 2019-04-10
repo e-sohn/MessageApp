@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router';
-import { Route, Link } from 'react-router-dom';
-import { dropToken } from '../services/apiHelper';
+import { Route } from 'react-router-dom';
 import Register from './Register';
 import Home from './Home';
 import Event from './Event';
@@ -32,7 +31,7 @@ const Main = (props) => {
             navLogin={props.navLogin}
             navRegister={props.navRegister}/>
       )}/>
-      <Route exact path='/home' render={() => (
+      <Route exact path='/events' render={() => (
         <Home
           events={props.events}
           navEvent={props.navEvent}/>
@@ -40,11 +39,19 @@ const Main = (props) => {
       <Route exact path='/events/:event_id' render={() => (
         <Event
           chatrooms={props.chatrooms}
-          navChatroom={props.navChatroom}/>
+          navChatroom={props.navChatroom}
+          navHome={props.navHome}/>
       )}/>
       <Route exact path='/events/:event_id/chatrooms/:chatroom_id' render={() => (
         <Chatroom
-          posts={props.posts}/>
+          user={props.user}
+          text={props.text}
+          handleChangeText={props.handleChangeText}
+          handleSubmitText={props.handleSubmitText}
+          removePost={props.removePost}
+          posts={props.posts}
+          navBackEvent={props.navBackEvent}
+          getUsers={props.getUsers}/>
       )}/>
     </main>
   )
