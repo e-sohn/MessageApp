@@ -5,6 +5,7 @@ import Register from './Register';
 import Home from './Home';
 import Event from './Event';
 import Chatroom from './Chatroom';
+import Profile from './Profile';
 
 const Main = (props) => {
   return (
@@ -31,6 +32,9 @@ const Main = (props) => {
             navLogin={props.navLogin}
             navRegister={props.navRegister}/>
       )}/>
+      <Route exact path='/profile' render={() => (
+        <Profile />
+      )}/>
       <Route exact path='/events' render={() => (
         <Home
           events={props.events}
@@ -51,7 +55,11 @@ const Main = (props) => {
           removePost={props.removePost}
           posts={props.posts}
           navBackEvent={props.navBackEvent}
-          getUsers={props.getUsers}/>
+          getUsers={props.getUsers}
+          makeEditForm={props.makeEditForm}
+          editFormId={props.editFormId}
+          editText={props.editText}
+          editPost={props.editPost}/>
       )}/>
     </main>
   )

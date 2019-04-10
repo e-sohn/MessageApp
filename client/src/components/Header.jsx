@@ -7,7 +7,7 @@ const Header = (props) => {
   const token = localStorage.getItem('token');
   return (
     <header>
-      <Link to="/home"><h1 className="title">Messaging</h1></Link>
+      <Link to="/events"><h1 className="title">Messaging</h1></Link>
       { window.location.pathname !== "/login" &&
       window.location.pathname !== "/" &&
       !token &&
@@ -19,7 +19,7 @@ const Header = (props) => {
         <p onClick={props.navLogin}>Login</p>
       }
       { token &&
-        <p>Welcome {props.username}</p>
+        <p onClick={props.navProfile}>Welcome {props.username}</p>
       }
       { token &&
         <p className="nav-link" onClick={() => {

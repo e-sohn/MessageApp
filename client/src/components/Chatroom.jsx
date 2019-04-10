@@ -5,14 +5,33 @@ const Chatroom = (props) => {
     <div>
       <p onClick={props.navBackEvent}>Back</p>
       {props.posts[0] !== undefined &&
-        <div>{props.posts.map(post => (
+        <div>{props.posts.map((post, id) => (
           <div key={post.id}>
             <p>{post.text}</p>
             { props.user.id === post.user_id &&
-              <>
+              <div>
                 <p onClick={() => props.removePost(post.id)}>Delete</p>
-                <p>Edit</p>
-              </>
+                <p onClick={() => props.makeEditForm(post.id, post.text)}>Edit</p>
+                { props.editFormId === post.id &&
+                  <form onSubmit={(ev) => {
+                    ev.preventDefault();
+                    props.editPost(post.id, id)}}>
+                    <input
+                      className="edit-input"
+                      type="text"
+                      name="editText"
+                      onChange={props.handleChangeText}
+                      value={props.editText}
+                      required />
+                    <input
+                      type="submit"
+                      value="Edit"
+                      onSubmit={(ev) => {
+                        ev.preventDefault();
+                        props.editPost(post.id, id)}} />
+                  </form>
+                }
+              </div>
             }
           </div>
         ))}</div>

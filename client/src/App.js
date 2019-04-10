@@ -13,7 +13,8 @@ import { loginUser,
   getUser,
   createPost,
   deletePost,
-  updatePost } from './services/apiHelper';
+  updatePost,
+  getChatroomUsers } from './services/apiHelper';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
@@ -26,6 +27,7 @@ class App extends Component {
         email:'',
         id: '',
       },
+      userChatrooms: [],
       registerForm: {
         username: '',
         email: '',
@@ -55,6 +57,7 @@ class App extends Component {
     this.removePost = this.removePost.bind(this);
     this.editPost = this.editPost.bind(this);
     this.makeEditForm = this.makeEditForm.bind(this);
+    this.navProfile = this.navProfile.bind(this);
 
   }
 
@@ -196,19 +199,27 @@ class App extends Component {
     }
   }
 
-  makeEditForm(formId) {
+  makeEditForm(formId, text) {
     this.setState({
-      editFormId: formId
+      editFormId: formId,
+      editText: text
     })
   }
 
-  async editPost(postId) {
+  async editPost(postId, arrayId) {
     const string = this.props.history.location.pathname;
     const chatroomId = string.match(/\d+/g).map(Number)[1];
 
     const newPost = await updatePost(postId, {
-      editText: this.state.editText,
+      text: this.state.editText,
       chatroom_id: chatroomId
+    });
+
+    const newPosts = [...this.state.posts];
+    newPosts[arrayId] = newPost.post;
+    this.setState({
+      editText: '',
+      posts: newPosts
     });
   }
 
@@ -237,6 +248,14 @@ class App extends Component {
     this.props.history.push(`/`);
   }
 
+  async navProfile() {
+    const userChatrooms = await getChatroomUsers(this.state.user.id)
+    this.setState({
+      userChatrooms
+    })
+    this.props.history.push(`/profile`)
+  }
+
   render() {
     return (
       <div className="App">
@@ -244,7 +263,8 @@ class App extends Component {
           handleLogout={this.handleLogout}
           username={this.state.user.username}
           navLogin={this.navLogin}
-          navRegister={this.navRegister}/>
+          navRegister={this.navRegister}
+          navProfile={this.navProfile}/>
         <Main
           user={this.state.user}
           handleChangeText={this.handleChangeText}
@@ -267,7 +287,10 @@ class App extends Component {
           getUsers={this.getUsers}
           text={this.state.text}
           removePost={this.removePost}
-          makeEditForm={this.makeEditForm}/>
+          makeEditForm={this.makeEditForm}
+          editFormId={this.state.editFormId}
+          editText={this.state.editText}
+          editPost={this.editPost}/>
         <Footer />
       </div>
     );
