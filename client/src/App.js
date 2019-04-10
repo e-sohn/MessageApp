@@ -320,7 +320,8 @@ class App extends Component {
           username={this.state.user.username}
           navLogin={this.navLogin}
           navRegister={this.navRegister}
-          navProfile={this.navProfile}/>
+          navProfile={this.navProfile}
+          navHome={this.navHome}/>
         <Main
           user={this.state.user}
           handleChangeText={this.handleChangeText}

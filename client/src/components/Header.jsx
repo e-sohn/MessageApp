@@ -1,13 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import { dropToken } from '../services/apiHelper';
 
 const Header = (props) => {
   const token = localStorage.getItem('token');
   return (
     <header>
-      <Link to="/events"><h1 className="title">Messaging</h1></Link>
+      <h1 className="title" onClick={props.navHome}>Messaging</h1>
       { window.location.pathname !== "/login" &&
       window.location.pathname !== "/" &&
       !token &&
