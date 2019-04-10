@@ -59,7 +59,8 @@ const Main = (props) => {
           makeEditForm={props.makeEditForm}
           editFormId={props.editFormId}
           editText={props.editText}
-          editPost={props.editPost}/>
+          editPost={props.editPost}
+          leaveChatroom={props.leaveChatroom}/>
       )}/>
     </main>
   )

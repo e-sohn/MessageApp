@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       if(params[:user_id].to_i == current_user.id)
         @user = User.find(params[:user_id])
         @chatroom = Chatroom.find(params[:chatroom_id])
-        @user.chatrooms << @chatroom
+        @user.chatrooms << @chatroom unless @user.chatrooms.include?(@chatroom)
       else
         render json: { errors: "unauthorized" }
       end

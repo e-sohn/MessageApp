@@ -14,7 +14,9 @@ import { loginUser,
   createPost,
   deletePost,
   updatePost,
-  getChatroomUsers } from './services/apiHelper';
+  getChatroomUsers,
+  createUserChatroom,
+  deleteUserChatroom } from './services/apiHelper';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
@@ -58,6 +60,7 @@ class App extends Component {
     this.editPost = this.editPost.bind(this);
     this.makeEditForm = this.makeEditForm.bind(this);
     this.navProfile = this.navProfile.bind(this);
+    this.leaveChatroom = this.leaveChatroom.bind(this);
 
   }
 
@@ -175,6 +178,8 @@ class App extends Component {
     const posts = await getPosts(chatroomId);
     const eventString = this.props.history.location.pathname;
     const eventId = eventString.match(/\d+/g).map(Number)[0];
+    const userChat = await createUserChatroom(this.state.user.id, chatroomId)
+
     this.setState({
       posts
     });
@@ -219,7 +224,8 @@ class App extends Component {
     newPosts[arrayId] = newPost.post;
     this.setState({
       editText: '',
-      posts: newPosts
+      posts: newPosts,
+      editFormId: null
     });
   }
 
@@ -228,6 +234,12 @@ class App extends Component {
     this.setState({
       posts: this.state.posts.filter((post) => post.id !== postId)
     });
+  }
+
+  async leaveChatroom() {
+    const string = this.props.history.location.pathname;
+    const chatroomId = string.match(/\d+/g).map(Number)[1];
+    await deleteUserChatroom(this.state.user.id, chatroomId);
   }
 
   navBackEvent() {
@@ -290,7 +302,8 @@ class App extends Component {
           makeEditForm={this.makeEditForm}
           editFormId={this.state.editFormId}
           editText={this.state.editText}
-          editPost={this.editPost}/>
+          editPost={this.editPost}
+          leaveChatroom={this.leaveChatroom}/>
         <Footer />
       </div>
     );

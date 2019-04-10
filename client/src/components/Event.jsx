@@ -6,8 +6,9 @@ const Event = (props) => {
       <p onClick={props.navHome}>Back</p>
       {props.chatrooms[0] !== undefined &&
         <div>{props.chatrooms.map(chatroom => (
-          <div key={chatroom.id} onClick={() => props.navChatroom(chatroom.id)}>
-            {chatroom.title}
+          <div key={chatroom.id}>
+            <p>{chatroom.title}</p>
+            <p onClick={() => props.navChatroom(chatroom.id)}>Join Chat</p>
           </div>
         ))}</div>
       }

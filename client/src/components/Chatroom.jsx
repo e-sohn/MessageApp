@@ -4,6 +4,10 @@ const Chatroom = (props) => {
   return (
     <div>
       <p onClick={props.navBackEvent}>Back</p>
+      <p onClick={() => {
+        props.leaveChatroom();
+        props.navBackEvent();
+      }}>Leave Chat</p>
       {props.posts[0] !== undefined &&
         <div>{props.posts.map((post, id) => (
           <div key={post.id}>
