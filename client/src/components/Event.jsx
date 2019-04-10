@@ -9,12 +9,12 @@ const Event = (props) => {
           <div key={chatroom.id}>
             <p>{chatroom.title}</p>
             <p onClick={() => {
-              props.grabChatroomUsers(chatroom.id);
-              props.navChatroom(chatroom.id, chatroom.event_id);
+              props.grabChatroomUsers(chatroom.id, chatroom.event_id);
             }}>Join Chat</p>
           </div>
         ))}</div>
       }
+      <p onClick={props.navChatroomForm}>Create Chat</p>
     </div>
   )
 };

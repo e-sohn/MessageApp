@@ -5,6 +5,7 @@ import Register from './Register';
 import Home from './Home';
 import Event from './Event';
 import Chatroom from './Chatroom';
+import ChatroomForm from './ChatroomForm';
 import Profile from './Profile';
 
 const Main = (props) => {
@@ -32,11 +33,17 @@ const Main = (props) => {
             navLogin={props.navLogin}
             navRegister={props.navRegister}/>
       )}/>
+      <Route exact path='/events/:event_id/chatroomform' render={() => (
+        <ChatroomForm
+          handleChangeChatroomForm={props.handleChangeChatroomForm}
+          chatroomTitle={props.chatroomTitle}
+          createNewChatroom={props.createNewChatroom}/>
+      )}/>
       <Route exact path='/profile' render={() => (
         <Profile
           userChatrooms={props.userChatrooms}
-          navChatroom={props.navChatroom}
-          grabChatroomUsers={props.grabChatroomUsers}/>
+          grabChatroomUsers={props.grabChatroomUsers}
+          removeUser={props.removeUser}/>
       )}/>
       <Route exact path='/events' render={() => (
         <Home
@@ -46,9 +53,9 @@ const Main = (props) => {
       <Route exact path='/events/:event_id' render={() => (
         <Event
           chatrooms={props.chatrooms}
-          navChatroom={props.navChatroom}
           navHome={props.navHome}
-          grabChatroomUsers={props.grabChatroomUsers}/>
+          grabChatroomUsers={props.grabChatroomUsers}
+          navChatroomForm={props.navChatroomForm}/>
       )}/>
       <Route exact path='/events/:event_id/chatrooms/:chatroom_id' render={() => (
         <Chatroom

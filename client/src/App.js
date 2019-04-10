@@ -17,7 +17,10 @@ import { loginUser,
   getUserChatrooms,
   getChatroomUsers,
   createUserChatroom,
-  deleteUserChatroom } from './services/apiHelper';
+  deleteUserChatroom,
+  deleteUser,
+  createChatroom,
+  deleteChatroom } from './services/apiHelper';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
@@ -37,6 +40,9 @@ class App extends Component {
         email: '',
         password: ''
       },
+      chatroomForm: {
+        title: ''
+      },
       editFormId: null,
       editText: '',
       text: '',
@@ -54,7 +60,6 @@ class App extends Component {
     this.navLogin = this.navLogin.bind(this);
     this.navRegister = this.navRegister.bind(this);
     this.navEvent = this.navEvent.bind(this);
-    this.navChatroom = this.navChatroom.bind(this);
     this.navHome = this.navHome.bind(this);
     this.navBackEvent = this.navBackEvent.bind(this);
     this.getUsers = this.getUsers.bind(this);
@@ -64,6 +69,10 @@ class App extends Component {
     this.navProfile = this.navProfile.bind(this);
     this.leaveChatroom = this.leaveChatroom.bind(this);
     this.grabChatroomUsers = this.grabChatroomUsers.bind(this);
+    this.removeUser = this.removeUser.bind(this);
+    this.navChatroomForm = this.navChatroomForm.bind(this);
+    this.handleChangeChatroomForm = this.handleChangeChatroomForm.bind(this);
+    this.createNewChatroom = this.createNewChatroom.bind(this);
 
   }
 
@@ -112,6 +121,16 @@ class App extends Component {
     this.setState(prevState => ({
       registerForm: {
         ...prevState.registerForm,
+        [name]: value
+      }
+    }))
+  }
+
+  handleChangeChatroomForm(ev) {
+    const { name, value } = ev.target;
+    this.setState(prevState => ({
+      chatroomForm: {
+        ...prevState.chatroomForm,
         [name]: value
       }
     }))
@@ -177,16 +196,6 @@ class App extends Component {
     })
   }
 
-  async navChatroom(chatroomId, eventId) {
-    const posts = await getPosts(chatroomId);
-    await createUserChatroom(this.state.user.id, chatroomId)
-
-    this.setState({
-      posts
-    });
-    this.props.history.push(`/events/${eventId}/chatrooms/${chatroomId}`);
-  }
-
   async navEvent(eventId) {
     const chatrooms = await getChatrooms(eventId);
     this.setState({
@@ -243,9 +252,13 @@ class App extends Component {
     await deleteUserChatroom(this.state.user.id, chatroomId);
   }
 
-  navBackEvent() {
+  async navBackEvent() {
     const eventString = this.props.history.location.pathname;
     const eventId = eventString.match(/\d+/g).map(Number)[0];
+    const chatrooms = await getChatrooms(eventId);
+    this.setState({
+      chatrooms
+    });
     this.props.history.push(`/events/${eventId}`);
   }
 
@@ -261,6 +274,25 @@ class App extends Component {
     this.props.history.push(`/`);
   }
 
+  navChatroomForm() {
+    const eventString = this.props.history.location.pathname;
+    const eventId = eventString.match(/\d+/g).map(Number)[0];
+    this.props.history.push(`/events/${eventId}/chatroomform`)
+  }
+
+  async createNewChatroom() {
+    const eventString = this.props.history.location.pathname;
+    const eventId = eventString.match(/\d+/g).map(Number)[0];
+    const newChatroom = await createChatroom({
+      title: this.state.chatroomForm.title,
+      event_id: eventId
+    });
+    this.setState(prevState => ({
+      chatrooms: [...prevState.chatrooms, newChatroom]
+    }));
+    this.props.history.push(`/events/${eventId}`)
+  }
+
   async navProfile() {
     const userChatrooms = await getUserChatrooms(this.state.user.id)
     this.setState({
@@ -269,11 +301,26 @@ class App extends Component {
     this.props.history.push(`/profile`)
   }
 
-  async grabChatroomUsers(chatroomId) {
+  async grabChatroomUsers(chatroomId, eventId) {
+    const posts = await getPosts(chatroomId);
+    await createUserChatroom(this.state.user.id, chatroomId)
+
+    this.setState({
+      posts
+    });
+    this.props.history.push(`/events/${eventId}/chatrooms/${chatroomId}`);
     const chatroomUsers = await getChatroomUsers(chatroomId)
     this.setState({
       chatroomUsers
     })
+  }
+
+  async removeUser() {
+    await deleteUser(this.state.user.id)
+    this.setState({
+      user: {}
+    });
+    this.props.history.push(`/`);
   }
 
   render() {
@@ -299,7 +346,6 @@ class App extends Component {
           navRegister={this.navRegister}
           navEvent={this.navEvent}
           navBackEvent={this.navBackEvent}
-          navChatroom={this.navChatroom}
           navHome={this.navHome}
           events={this.state.events}
           chatrooms={this.state.chatrooms}
@@ -314,7 +360,12 @@ class App extends Component {
           leaveChatroom={this.leaveChatroom}
           userChatrooms={this.state.userChatrooms}
           grabChatroomUsers={this.grabChatroomUsers}
-          chatroomUsers={this.state.chatroomUsers}/>
+          chatroomUsers={this.state.chatroomUsers}
+          removeUser={this.removeUser}
+          navChatroomForm={this.navChatroomForm}
+          handleChangeChatroomForm={this.handleChangeChatroomForm}
+          chatroomTitle={this.state.chatroomForm.title}
+          createNewChatroom={this.createNewChatroom}/>
         <Footer />
       </div>
     );
