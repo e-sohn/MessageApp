@@ -5,8 +5,8 @@ import { dropToken } from '../services/apiHelper';
 const Header = (props) => {
   const token = localStorage.getItem('token');
   return (
-    <header>
-      <h1 className="title" onClick={props.navHome}>Messaging</h1>
+    <div className="header">
+      <p className="title" onClick={props.navHome}>Messaging</p>
       { window.location.pathname !== "/login" &&
       window.location.pathname !== "/" &&
       !token &&
@@ -18,16 +18,16 @@ const Header = (props) => {
         <p onClick={props.navLogin}>Login</p>
       }
       { token &&
-        <p onClick={props.navProfile}>Welcome {props.username}</p>
+        <nav>
+          <a className="nav-link" onClick={props.navProfile}>Welcome {props.username}</a>
+          <a className="nav-link" onClick={() => {
+            dropToken();
+            props.handleLogout();
+            props.history.push(`/`);
+          }}>Sign Out</a>
+        </nav>
       }
-      { token &&
-        <p className="nav-link" onClick={() => {
-          dropToken();
-          props.handleLogout();
-          props.history.push(`/`);
-          }}>Sign Out</p>
-      }
-    </header>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ import Profile from './Profile';
 
 const Main = (props) => {
   return (
-    <main>
+    <div className="main">
       <Route exact path='/' render={() => (
           <Register
             handleChange={props.handleChange}
@@ -73,7 +73,7 @@ const Main = (props) => {
           leaveChatroom={props.leaveChatroom}
           chatroomUsers={props.chatroomUsers}/>
       )}/>
-    </main>
+    </div>
   )
 }
 
