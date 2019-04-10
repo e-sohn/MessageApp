@@ -102,13 +102,13 @@ const getPosts = async (chatroom_id) => {
   return resp.data;
 };
 
-// Create Post (data contains text and chatroom id)
+// Create Post (data contains text, chatroom id, user id)
 const createPost = async (data) => {
   const resp = await api.post(`/posts`, data);
   return resp.data;
 };
 
-// Update Post (data contains text and chatroom id)
+// Update Post (data contains text, chatroom id, user id)
 const updatePost = async (id, data) => {
   const resp = await api.put(`/posts/${id}`, data);
   return resp.data;

@@ -12,7 +12,7 @@ const Chatroom = (props) => {
       {props.posts[0] !== undefined &&
         <div>{props.posts.map((post, id) => (
           <div key={post.id}>
-            <p>{post.user_id}</p>
+            <p>{post.user.username}</p>
             <p>{moment(post.created_at).format('hh:mm')}</p>
             <p>{post.text}</p>
             { props.user.id === post.user_id &&

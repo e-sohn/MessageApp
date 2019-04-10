@@ -66,7 +66,6 @@ const Main = (props) => {
           removePost={props.removePost}
           posts={props.posts}
           navBackEvent={props.navBackEvent}
-          getUsers={props.getUsers}
           makeEditForm={props.makeEditForm}
           editFormId={props.editFormId}
           editText={props.editText}

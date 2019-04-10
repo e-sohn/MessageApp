@@ -19,8 +19,7 @@ import { loginUser,
   createUserChatroom,
   deleteUserChatroom,
   deleteUser,
-  createChatroom,
-  deleteChatroom } from './services/apiHelper';
+  createChatroom } from './services/apiHelper';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
@@ -62,7 +61,6 @@ class App extends Component {
     this.navEvent = this.navEvent.bind(this);
     this.navHome = this.navHome.bind(this);
     this.navBackEvent = this.navBackEvent.bind(this);
-    this.getUsers = this.getUsers.bind(this);
     this.removePost = this.removePost.bind(this);
     this.editPost = this.editPost.bind(this);
     this.makeEditForm = this.makeEditForm.bind(this);
@@ -204,16 +202,6 @@ class App extends Component {
     this.props.history.push(`/events/${eventId}`);
   }
 
-  async getUsers(posts) {
-    if (posts) {
-      const usernames = posts.map(async (post) => {
-        const user = await getUser(post.user_id);
-        return user
-      });
-      return await Promise.all(usernames);
-    }
-  }
-
   makeEditForm(formId, text) {
     this.setState({
       editFormId: formId,
@@ -302,13 +290,14 @@ class App extends Component {
   }
 
   async grabChatroomUsers(chatroomId, eventId) {
+
     const posts = await getPosts(chatroomId);
     await createUserChatroom(this.state.user.id, chatroomId)
-
     this.setState({
       posts
     });
     this.props.history.push(`/events/${eventId}/chatrooms/${chatroomId}`);
+
     const chatroomUsers = await getChatroomUsers(chatroomId)
     this.setState({
       chatroomUsers
@@ -350,7 +339,6 @@ class App extends Component {
           events={this.state.events}
           chatrooms={this.state.chatrooms}
           posts={this.state.posts}
-          getUsers={this.getUsers}
           text={this.state.text}
           removePost={this.removePost}
           makeEditForm={this.makeEditForm}
