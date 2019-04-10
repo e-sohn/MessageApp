@@ -10418,3 +10418,1263 @@ Processing by UsersController#create as HTML
 Completed 204 No Content in 3ms (ActiveRecord: 0.7ms)
 
 
+Started GET "/events" for ::1 at 2019-04-10 09:21:14 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 34ms (Views: 7.3ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 09:21:23 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 09:21:27 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 09:21:27 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 5ms (ActiveRecord: 0.8ms)
+
+
+Started PUT "/posts/24" for ::1 at 2019-04-10 09:21:47 -0400
+Processing by PostsController#update as HTML
+  Parameters: {"text"=>"no", "chatroom_id"=>6, "id"=>"24", "post"=>{"text"=>"no", "chatroom_id"=>6}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:21
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:21
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:21
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:26:23 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:26:57 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (16.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 20ms (Views: 1.8ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:29:16 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 12ms (Views: 7.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:30:14 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:31:32 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:31:50 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 9ms (Views: 2.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:33:51 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:33:56 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 09:36:57 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:37:58 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:38:57 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 13ms (Views: 2.4ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 09:39:03 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 09:39:14 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 09:39:14 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/events/2/chatrooms" for ::1 at 2019-04-10 09:39:22 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 2]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/chatrooms/3/posts" for ::1 at 2019-04-10 09:39:23 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 3]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/3" for ::1 at 2019-04-10 09:39:23 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:18
+  [1m[36mUser::HABTM_Chatrooms Create (0.2ms)[0m  [1m[32mINSERT INTO "chatrooms_users" ("chatroom_id", "user_id") VALUES ($1, $2)[0m  [["chatroom_id", 3], ["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  [1m[35m (40.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 53ms (ActiveRecord: 41.9ms)
+
+
+Started GET "/chatrooms/1/posts" for ::1 at 2019-04-10 09:39:26 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/1" for ::1 at 2019-04-10 09:39:26 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/chatrooms/5/posts" for ::1 at 2019-04-10 09:39:28 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 5]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 8ms (Views: 2.9ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/1/chatrooms/5" for ::1 at 2019-04-10 09:39:28 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:39:39 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:40:12 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 9ms (Views: 1.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/events/3/chatrooms" for ::1 at 2019-04-10 09:40:46 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 3]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chatrooms/2/posts" for ::1 at 2019-04-10 09:40:48 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 2]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/2" for ::1 at 2019-04-10 09:40:48 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:18
+  [1m[36mUser::HABTM_Chatrooms Create (0.2ms)[0m  [1m[32mINSERT INTO "chatrooms_users" ("chatroom_id", "user_id") VALUES ($1, $2)[0m  [["chatroom_id", 2], ["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:18
+  [1m[35m (40.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 47ms (ActiveRecord: 41.6ms)
+
+
+Started GET "/chatrooms/4/posts" for ::1 at 2019-04-10 09:40:51 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 4]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/4" for ::1 at 2019-04-10 09:40:51 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:41:09 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/chatrooms/1/posts" for ::1 at 2019-04-10 09:41:13 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/chatrooms/1" for ::1 at 2019-04-10 09:41:13 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:41:19 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 10ms (Views: 7.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/chatrooms/5/posts" for ::1 at 2019-04-10 09:41:26 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 5]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/5" for ::1 at 2019-04-10 09:41:26 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/events/2/chatrooms" for ::1 at 2019-04-10 09:41:32 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 2]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chatrooms/5/posts" for ::1 at 2019-04-10 09:41:35 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 5]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/chatrooms/5" for ::1 at 2019-04-10 09:41:35 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:41:37 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 09:41:39 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 09:41:39 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 09:41:45 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 09:41:48 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 09:41:48 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:41:50 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/chatrooms/1/posts" for ::1 at 2019-04-10 09:42:49 -0400
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/chatrooms/1" for ::1 at 2019-04-10 09:42:49 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.1ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:43:30 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:43:31 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:43:33 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:51:15 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 09:54:55 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 09:55:03 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.7ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:57:57 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 09:58:28 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 10:00:25 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 10:03:41 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 10:03:54 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chatrooms/6/users" for ::1 at 2019-04-10 10:03:56 -0400
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 10:03:56 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/users_controller.rb:71
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 9ms (Views: 5.0ms | ActiveRecord: 1.2ms)
+
+
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.5ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 10:03:56 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 10:07:03 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 10:07:24 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 10:08:32 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/chatrooms/6/users" for ::1 at 2019-04-10 10:08:33 -0400
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 10:08:33 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"chatroom_id"=>"6"}
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/users_controller.rb:71
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 1.9ms)
+
+
+  [1m[36mChatroom Load (1.7ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 12ms (Views: 4.9ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 10:08:33 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 10:08:38 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/chatrooms/1/users" for ::1 at 2019-04-10 10:08:41 -0400
+Started GET "/chatrooms/1/posts" for ::1 at 2019-04-10 10:08:41 -0400
+Processing by UsersController#index as HTML
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"1"}
+  Parameters: {"chatroom_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.5ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mChatroom Load (1.6ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users/1/chatrooms/1" for ::1 at 2019-04-10 10:08:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 5ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 10:08:42 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/chatrooms/6/users" for ::1 at 2019-04-10 10:08:44 -0400
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 10:08:44 -0400
+Processing by UsersController#index as HTML
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.5ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/users_controller.rb:71
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mChatroom Load (1.4ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 10ms (Views: 4.3ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 10:08:44 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/events" for ::1 at 2019-04-10 10:12:45 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:4
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/events/1/chatrooms" for ::1 at 2019-04-10 10:12:48 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"event_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:4
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."event_id" = $1[0m  [["event_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:6
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/chatrooms/6/users" for ::1 at 2019-04-10 10:12:49 -0400
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 10:12:49 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"chatroom_id"=>"6"}
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mChatroom Load (1.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/users_controller.rb:71
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/posts_controller.rb:5
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 2.7ms)
+
+
+  [1m[36mChatroom Load (1.7ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 14ms (Views: 5.2ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 10:12:49 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 4ms (ActiveRecord: 0.9ms)
+
+
+Started DELETE "/posts/24" for ::1 at 2019-04-10 10:13:29 -0400
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:29
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:30
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 24]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31
+Completed 204 No Content in 11ms (ActiveRecord: 6.5ms)
+
+
+Started DELETE "/posts/22" for ::1 at 2019-04-10 10:13:30 -0400
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:29
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:30
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[36mPost Destroy (0.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  ↳ app/controllers/posts_controller.rb:31
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:31
+Completed 204 No Content in 9ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/users/1/chatrooms" for ::1 at 2019-04-10 10:13:32 -0400
+Processing by ChatroomsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:8
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/chatrooms_controller.rb:10
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/chatrooms/6/users" for ::1 at 2019-04-10 10:13:34 -0400
+Started GET "/chatrooms/6/posts" for ::1 at 2019-04-10 10:13:34 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+Processing by PostsController#index as HTML
+  Parameters: {"chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mChatroom Load (0.4ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:69
+  [1m[36mChatroom Load (1.5ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "chatrooms_users" ON "users"."id" = "chatrooms_users"."user_id" WHERE "chatrooms_users"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  ↳ app/controllers/users_controller.rb:71
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."chatroom_id" = $1[0m  [["chatroom_id", 6]]
+  [1m[36mChatroom Load (0.2ms)[0m  [1m[34mSELECT "chatrooms".* FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5
+  ↳ app/controllers/users_controller.rb:71
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 3.2ms)
+
+
+Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users/1/chatrooms/6" for ::1 at 2019-04-10 10:13:34 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user_id"=>"1", "chatroom_id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mChatroom Load (0.3ms)[0m  [1m[34mSELECT  "chatrooms".* FROM "chatrooms" WHERE "chatrooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+  [1m[36mChatroom Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "chatrooms" INNER JOIN "chatrooms_users" ON "chatrooms"."id" = "chatrooms_users"."chatroom_id" WHERE "chatrooms_users"."user_id" = $1 AND "chatrooms"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18
+Completed 204 No Content in 5ms (ActiveRecord: 1.0ms)
+
+

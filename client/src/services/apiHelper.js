@@ -123,13 +123,13 @@ const deletePost = async (id) => {
 /////////////////////// User/Chatroom JOIN ////////////////////////
 
 // Get all users for chatroom
-const getUserChatrooms = async (chatroom_id) => {
+const getChatroomUsers = async (chatroom_id) => {
   const resp = await api.get(`/chatrooms/${chatroom_id}/users`);
   return resp.data;
 };
 
 // Get all chatrooms for user
-const getChatroomUsers = async (user_id) => {
+const getUserChatrooms = async (user_id) => {
   const resp = await api.get(`/users/${user_id}/chatrooms`);
   return resp.data;
 };

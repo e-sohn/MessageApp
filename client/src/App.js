@@ -14,6 +14,7 @@ import { loginUser,
   createPost,
   deletePost,
   updatePost,
+  getUserChatrooms,
   getChatroomUsers,
   createUserChatroom,
   deleteUserChatroom } from './services/apiHelper';
@@ -30,6 +31,7 @@ class App extends Component {
         id: '',
       },
       userChatrooms: [],
+      chatroomUsers: [],
       registerForm: {
         username: '',
         email: '',
@@ -61,6 +63,7 @@ class App extends Component {
     this.makeEditForm = this.makeEditForm.bind(this);
     this.navProfile = this.navProfile.bind(this);
     this.leaveChatroom = this.leaveChatroom.bind(this);
+    this.grabChatroomUsers = this.grabChatroomUsers.bind(this);
 
   }
 
@@ -174,11 +177,9 @@ class App extends Component {
     })
   }
 
-  async navChatroom(chatroomId) {
+  async navChatroom(chatroomId, eventId) {
     const posts = await getPosts(chatroomId);
-    const eventString = this.props.history.location.pathname;
-    const eventId = eventString.match(/\d+/g).map(Number)[0];
-    const userChat = await createUserChatroom(this.state.user.id, chatroomId)
+    await createUserChatroom(this.state.user.id, chatroomId)
 
     this.setState({
       posts
@@ -261,11 +262,18 @@ class App extends Component {
   }
 
   async navProfile() {
-    const userChatrooms = await getChatroomUsers(this.state.user.id)
+    const userChatrooms = await getUserChatrooms(this.state.user.id)
     this.setState({
       userChatrooms
     })
     this.props.history.push(`/profile`)
+  }
+
+  async grabChatroomUsers(chatroomId) {
+    const chatroomUsers = await getChatroomUsers(chatroomId)
+    this.setState({
+      chatroomUsers
+    })
   }
 
   render() {
@@ -303,7 +311,10 @@ class App extends Component {
           editFormId={this.state.editFormId}
           editText={this.state.editText}
           editPost={this.editPost}
-          leaveChatroom={this.leaveChatroom}/>
+          leaveChatroom={this.leaveChatroom}
+          userChatrooms={this.state.userChatrooms}
+          grabChatroomUsers={this.grabChatroomUsers}
+          chatroomUsers={this.state.chatroomUsers}/>
         <Footer />
       </div>
     );

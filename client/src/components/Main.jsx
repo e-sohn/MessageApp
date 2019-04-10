@@ -33,7 +33,10 @@ const Main = (props) => {
             navRegister={props.navRegister}/>
       )}/>
       <Route exact path='/profile' render={() => (
-        <Profile />
+        <Profile
+          userChatrooms={props.userChatrooms}
+          navChatroom={props.navChatroom}
+          grabChatroomUsers={props.grabChatroomUsers}/>
       )}/>
       <Route exact path='/events' render={() => (
         <Home
@@ -44,7 +47,8 @@ const Main = (props) => {
         <Event
           chatrooms={props.chatrooms}
           navChatroom={props.navChatroom}
-          navHome={props.navHome}/>
+          navHome={props.navHome}
+          grabChatroomUsers={props.grabChatroomUsers}/>
       )}/>
       <Route exact path='/events/:event_id/chatrooms/:chatroom_id' render={() => (
         <Chatroom
@@ -60,7 +64,8 @@ const Main = (props) => {
           editFormId={props.editFormId}
           editText={props.editText}
           editPost={props.editPost}
-          leaveChatroom={props.leaveChatroom}/>
+          leaveChatroom={props.leaveChatroom}
+          chatroomUsers={props.chatroomUsers}/>
       )}/>
     </main>
   )

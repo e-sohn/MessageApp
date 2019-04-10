@@ -8,7 +8,10 @@ const Event = (props) => {
         <div>{props.chatrooms.map(chatroom => (
           <div key={chatroom.id}>
             <p>{chatroom.title}</p>
-            <p onClick={() => props.navChatroom(chatroom.id)}>Join Chat</p>
+            <p onClick={() => {
+              props.grabChatroomUsers(chatroom.id);
+              props.navChatroom(chatroom.id, chatroom.event_id);
+            }}>Join Chat</p>
           </div>
         ))}</div>
       }
