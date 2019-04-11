@@ -72,10 +72,12 @@ nav {
 }
 
 .register-button {
+  margin-top: 1.5vh;
   cursor: pointer;
 }
 
 .login-button {
+  margin-top: 1.5vh;
   cursor: pointer;
 }
 
@@ -194,6 +196,7 @@ nav {
 .back {
   margin-top: 10px;
   margin-left: 10px;
+  margin-right: 10px;
   font-size: 3vh;
   cursor: pointer;
   background-color: #350486;
@@ -242,7 +245,21 @@ nav {
 }
 
 .event-title {
+  margin: 2vh auto;
+  display: block;
   cursor: pointer;
+  font-size: 3vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.event-title:hover {
+  color:white;
 }
 
 .comment-form {
@@ -252,4 +269,160 @@ nav {
 
 .comment {
   display: inline-block;
+}
+
+.create-chat-button {
+  font-size: 3vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.create-chat-button:hover {
+  color: white;
+}
+
+.chatroom-form-title {
+  text-align: center;
+}
+
+.chatroom-form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: auto;
+  min-height: 100px;
+  max-width: 90%;
+  margin: 40px auto;
+}
+
+.chatroom-form-input {
+  margin-bottom: 10px;
+}
+
+.submit-chatroom {
+  font-size: 3vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.submit-chatroom:hover {
+  color: white;
+}
+
+.home-title {
+  text-align: center;
+}
+
+.list-chatrooms {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.individual-chatroom {
+  border-radius: 10px;
+  width: 30vh;
+  height: 15vh;
+  text-align: center;
+  background-color: #1f56af;
+  color: white;
+  margin: 7vh;
+}
+
+.join-chat-button {
+  font-size: 3vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.join-chat-button:hover {
+  color: white;
+}
+
+.register-login-button {
+  font-size: 4vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.register-login-button {
+  color: white;
+}
+
+.register-button {
+  font-size: 3.5vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.register-button {
+  color: white;
+  margin-right: 3px;
+}
+
+.login-button {
+  font-size: 3.5vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.login-button {
+  color: white;
+}
+
+.edit-input {
+  border-radius: 10px;
+  border: solid;
+  padding: 5px;
+}
+
+.submit-edit-post {
+  margin-left: 2px;
+  font-size: 2vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }

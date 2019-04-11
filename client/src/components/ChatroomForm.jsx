@@ -2,19 +2,21 @@ import React from 'react';
 
 const ChatroomForm = (props) => {
   return (
-    <div>
-      <h2>Create New Chatroom</h2>
-      <form onSubmit={(ev) => {
+    <div className="chatroom-form-component">
+      <h2 className="chatroom-form-title">Create New Chatroom</h2>
+      <form className="chatroom-form" onSubmit={(ev) => {
         ev.preventDefault();
         props.createNewChatroom()}}>
         <input
           className="chatroom-form-input"
           type="text"
           name="title"
+          placeholder="Title"
           onChange={props.handleChangeChatroomForm}
           value={props.chatroomTitle}
           required />
         <input
+          className="submit-chatroom"
           type="submit"
           value="Post Chatroom"
           onSubmit={(ev) => {

@@ -38,6 +38,7 @@ const Chatroom = (props) => {
                         value={props.editText}
                         required />
                       <input
+                        className="submit-edit-post"
                         type="submit"
                         value="Edit"
                         onSubmit={(ev) => {
@@ -69,6 +70,7 @@ const Chatroom = (props) => {
             className="post-input"
             type="text"
             name="text"
+            placeholder="Text"
             onChange={props.handleChangeText}
             value={props.text}
             required />

@@ -3,18 +3,18 @@ import { dropToken } from '../services/apiHelper';
 
 const Profile = (props) => {
   return (
-    <div>
+    <div className="profile-page">
       <button className="delete-profile" onClick={() => {
         props.removeUser();
         dropToken();
       }}>Delete Profile</button>
       {props.userChatrooms[0] !== undefined &&
-        <div>{props.userChatrooms.map(userChatroom => (
-          <div key={userChatroom.id}>
+        <div className="list-chatrooms">{props.userChatrooms.map(userChatroom => (
+          <div className="individual-chatroom" key={userChatroom.id}>
             <p>{userChatroom.title}</p>
-            <p onClick={() => {
+            <button className="join-chat-button" onClick={() => {
               props.grabChatroomUsers(userChatroom.id, userChatroom.event_id);
-            }}>Go to Chat</p>
+            }}>Go to Chat</button>
           </div>
         ))}</div>
       }

@@ -32,14 +32,14 @@ const Register = (props) => {
           onChange={props.handleChange}
           value={props.password}
           required />
-        <input
-          type="submit"
+        <button
+          className="register-login-button"
           value={props.value}
-          onSubmit={props.handleSubmit} />
+          onSubmit={props.handleSubmit}>Submit</button>
       </form>
       <div className="register-login-buttons">
-        <p className="register-button" onClick={props.navRegister}>Register</p>
-        <p className="login-button" onClick={props.navLogin}>Log In</p>
+        <button className="register-button" onClick={props.navRegister}>Register Form</button>
+        <button className="login-button" onClick={props.navLogin}>Log In Form</button>
       </div>
     </div>
   )
