@@ -94,3 +94,106 @@ nav {
   margin-bottom: 0.25rem;
   border-radius: 3px;
 }
+
+.post-input {
+  height: 8px;
+  border-radius: 2px;
+  border: solid;
+  padding: 20px 15px;
+  text-align: left;
+  font-size: 18px;
+  margin: 0 auto;
+  width: 50vw;
+}
+
+.post-submit {
+  display: none;
+}
+
+.chatroom {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatroom-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.posts-users {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem 0;
+}
+
+.user-time {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-text-button {
+  display: flex;
+  flex-direction: row;
+  margin-top: .3rem;
+}
+
+.post-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-text {
+  margin: auto 1rem;
+}
+
+.post-user {
+  margin: auto 1rem;
+}
+
+.post-time {
+  margin: 0 1rem;
+}
+
+.delete {
+  margin: auto 1rem;
+  cursor: pointer;
+}
+
+.edit {
+  margin: auto 1rem;
+  cursor: pointer;
+}
+
+.back {
+  cursor: pointer;
+  border: solid;
+}
+
+.leave-chat {
+  cursor: pointer;
+  border: solid;
+}
+
+.event-title {
+  cursor: pointer;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+.comment {
+  display: inline-block;
+}
