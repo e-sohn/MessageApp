@@ -41,6 +41,8 @@ nav {
 .nav-link {
   margin: 0 1rem;
   cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 
 .nav-link:hover {
@@ -49,6 +51,8 @@ nav {
 
 .title {
   cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 
 .title:hover {
@@ -96,7 +100,7 @@ nav {
 }
 
 .post-input {
-  height: 8px;
+  height: 4px;
   border-radius: 2px;
   border: solid;
   padding: 20px 15px;
@@ -119,12 +123,14 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-grow: 1;
 }
 
 .posts-users {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-grow: 50;
 }
 
 .posts {
@@ -132,10 +138,21 @@ nav {
   flex-direction: column;
 }
 
+
+.post-buttons {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
 .post {
   display: flex;
   flex-direction: column;
   margin: 1.2rem 0;
+  transition: 150ms ease;
+}
+
+.post:hover .post-buttons{
+  opacity: 1;
 }
 
 .user-time {
@@ -149,10 +166,6 @@ nav {
   margin-top: .3rem;
 }
 
-.post-buttons {
-  display: flex;
-  flex-direction: row;
-}
 
 .post-text {
   margin: auto 1rem;
@@ -169,21 +182,63 @@ nav {
 .delete {
   margin: auto 1rem;
   cursor: pointer;
+  display: inline;
 }
 
 .edit {
   margin: auto 1rem;
   cursor: pointer;
+  display: inline;
 }
 
 .back {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 3vh;
   cursor: pointer;
-  border: solid;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.back:hover {
+  color: white;
 }
 
 .leave-chat {
   cursor: pointer;
-  border: solid;
+  font-size: 3vh;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.leave-chat:hover {
+  color: white;
+}
+
+.delete-profile {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 3vh;
+  cursor: pointer;
+  background-color: #350486;
+  color: #A88DFD;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.delete-profile:hover {
+  color: white;
 }
 
 .event-title {
@@ -192,6 +247,7 @@ nav {
 
 .comment-form {
   text-align: center;
+  flex-grow: 1;
 }
 
 .comment {

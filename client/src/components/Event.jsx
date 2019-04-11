@@ -2,8 +2,8 @@ import React from 'react';
 
 const Event = (props) => {
   return (
-    <div>
-      <p onClick={props.navHome}>Back</p>
+    <div className="events-page">
+      <button className="back" onClick={props.navHome}>Back</button>
       {props.chatrooms[0] !== undefined &&
         <div>{props.chatrooms.map(chatroom => (
           <div key={chatroom.id}>

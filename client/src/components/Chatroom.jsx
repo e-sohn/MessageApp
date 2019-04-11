@@ -5,11 +5,11 @@ const Chatroom = (props) => {
   return (
     <div className="chatroom">
       <div className="chatroom-links">
-        <p className="back" onClick={props.navBackEvent}>Back</p>
-        <p className="leave-chat" onClick={() => {
+        <button className="back" onClick={props.navBackEvent}>Back</button>
+        <button className="leave-chat" onClick={() => {
           props.leaveChatroom();
           props.navBackEvent();
-        }}>Leave Chat</p>
+        }}>Leave Chat</button>
       </div>
       <div className="posts-users">
       {props.posts[0] !== undefined &&
@@ -18,6 +18,7 @@ const Chatroom = (props) => {
             <div className="user-time">
               <p className="post-user">{post.user.username}</p>
               <p className="post-time">{moment(post.created_at).format('hh:mm')}</p>
+
             </div>
             <div className='post-text-button'>
               <p className="post-text">{post.text}</p>

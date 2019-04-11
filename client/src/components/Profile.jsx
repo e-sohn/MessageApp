@@ -4,10 +4,10 @@ import { dropToken } from '../services/apiHelper';
 const Profile = (props) => {
   return (
     <div>
-      <p onClick={() => {
+      <button className="delete-profile" onClick={() => {
         props.removeUser();
         dropToken();
-      }}>Delete Profile</p>
+      }}>Delete Profile</button>
       {props.userChatrooms[0] !== undefined &&
         <div>{props.userChatrooms.map(userChatroom => (
           <div key={userChatroom.id}>
