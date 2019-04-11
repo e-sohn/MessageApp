@@ -10,21 +10,21 @@ const Header = (props) => {
       { window.location.pathname !== "/login" &&
       window.location.pathname !== "/" &&
       !token &&
-        <p onClick={props.navRegister}>Register</p>
+        <p className="nav-link" onClick={props.navRegister}>Register</p>
       }
       { window.location.pathname !== "/login" &&
       window.location.pathname !== "/" &&
       !token &&
-        <p onClick={props.navLogin}>Login</p>
+        <p className="nav-link" onClick={props.navLogin}>Login</p>
       }
       { token &&
         <nav>
-          <a className="nav-link" onClick={props.navProfile}>Welcome {props.username}</a>
-          <a className="nav-link" onClick={() => {
+          <p className="nav-link" onClick={props.navProfile}>Welcome {props.username}</p>
+          <p className="nav-link" onClick={() => {
             dropToken();
             props.handleLogout();
             props.history.push(`/`);
-          }}>Sign Out</a>
+          }}>Sign Out</p>
         </nav>
       }
     </div>

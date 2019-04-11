@@ -2,6 +2,11 @@ body > #root > div {
   min-height: 100vh;
 }
 
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -48,4 +53,44 @@ body > #root > div {
 
 .title:hover {
   color: white;
+}
+
+.auth {
+  width: 300px;
+  height: auto;
+  min-height: 100px;
+  background: rgba(255, 255, 255, 0.95);
+  max-width: 90%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+}
+
+.register-button {
+  cursor: pointer;
+}
+
+.login-button {
+  cursor: pointer;
+}
+
+.register-login-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-input {
+  background: white;
+  color: #222;
+  padding: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-radius: 3px;
 }

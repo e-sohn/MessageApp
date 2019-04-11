@@ -2,11 +2,10 @@ import React from 'react';
 
 const Register = (props) => {
   return (
-    <div>
+    <div className="auth">
       <form
         onSubmit={props.handleSubmit}
         className="register-form">
-        <div>
         { window.location.pathname !== "/login" &&
          <input
           className="register-input"
@@ -21,7 +20,7 @@ const Register = (props) => {
           className="register-input"
           type="email"
           name="email"
-          placeholder="email"
+          placeholder="Email"
           onChange={props.handleChange}
           value={props.email}
           required />
@@ -37,10 +36,11 @@ const Register = (props) => {
           type="submit"
           value={props.value}
           onSubmit={props.handleSubmit} />
-        </div>
       </form>
-      <p onClick={props.navRegister}>Register</p>
-      <p onClick={props.navLogin}>Log In</p>
+      <div className="register-login-buttons">
+        <p className="register-button" onClick={props.navRegister}>Register</p>
+        <p className="login-button" onClick={props.navLogin}>Log In</p>
+      </div>
     </div>
   )
 };
