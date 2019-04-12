@@ -14,12 +14,15 @@ Chat is a place for users to chat about live events. Whether it's the NBA champi
 - User can create a chatroom based on event
 - User can create, read, update, or delete messages inside chatroom
 - Other users can enter chatroom and read others messages
-- Live chat
+- Users can see who belongs to a chatroom
+- User can see all of the chatrooms they belong to
+- User can delete profile
 
 ## Post MVP
 - Use API to display events live
+- Live chat
 - User can delete chatroom
-- User can assign roles
+- User can assign roles (different levels of authentication)
 
 ## List Dependencies
 - Axios
@@ -44,5 +47,8 @@ Chat is a place for users to chat about live events. Whether it's the NBA champi
 
 ## Code Snippet
 ```
-
+const eventString = this.props.history.location.pathname;
+const eventId = eventString.match(/\d+/g).map(Number)[0];
 ```
+
+In a couple of my axios calls, I needed to obtain the eventId and pass that in as an argument. I was able to obtain the url (using this.props.history.location.pathname) which contained the eventId. From there I had to use regex to locate all the numbers in the url, then target specifically the number I was looking for. In this case, I needed the first number from the array of numbers I obtained from regex and I set that as the eventId. 

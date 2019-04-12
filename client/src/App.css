@@ -360,7 +360,7 @@ nav {
 }
 
 .register-login-button {
-  font-size: 4vh;
+  font-size: 3vh;
   cursor: pointer;
   background-color: #350486;
   color: #A88DFD;
@@ -376,7 +376,7 @@ nav {
 }
 
 .register-button {
-  font-size: 3.5vh;
+  font-size: 2.5vh;
   cursor: pointer;
   background-color: #350486;
   color: #A88DFD;
@@ -393,7 +393,7 @@ nav {
 }
 
 .login-button {
-  font-size: 3.5vh;
+  font-size: 2.5vh;
   cursor: pointer;
   background-color: #350486;
   color: #A88DFD;
