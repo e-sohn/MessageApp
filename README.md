@@ -1,9 +1,10 @@
 # chat-app
 
 ## Link to deployed project
+![Link](https://sable-yak.surge.sh)
 
 ## Project Description
-Chat is a place for users to chat about live events. Whether it's the NBA championship or a MSG concert, users can talk with other users with similar interests in real time. Users can create a chatroom based on a preset Event (initially created by seed data, but the idea is that the chatroom will only last as long as the event. Afterwards it will be deleted from memory). Other users can enter this chatroom to have interesting conversations.
+MessageApp is a place for users to chat about live events. Whether it's the NBA championship or a MSG concert, users can talk with other users with similar interests in real time. Users can create a chatroom based on a preset Event (initially created by seed data, but the idea is that the chatroom will only last as long as the event. Afterwards it will be deleted from memory). Other users can enter this chatroom to have interesting conversations.
 
 ## MVP
 - App registration
